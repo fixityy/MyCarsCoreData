@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         guard let _ = (scene as? UIWindowScene) else { return }
         
+        //передаем контекст во вью контроллер
         let vc = window?.rootViewController as! ViewController
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         vc.context = context

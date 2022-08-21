@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl! {
         didSet {
-            
+            //Проверяем, загружены или нет первоначальные данные из data.plist
             if let isDataLoaded = UserDefaults.standard.value(forKey: "isDataLoaded") as? Bool, !isDataLoaded {
                 getDataFromFile()
                 UserDefaults.standard.set(true, forKey: "isDataLoaded")
@@ -92,6 +92,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //Получаем первоначальные данные из data.plist
     private func getDataFromFile() {
         
         var dataArray = [[String: Any]]()
@@ -151,6 +152,7 @@ class ViewController: UIViewController {
         segmentedControl.backgroundColor = selectedCar.tintColor as? UIColor
     }
     
+    //Загружаем данные о машине из CoreData
     private func updateUI(segmentedControlIndex: Int) {
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
         let mark = segmentedControl.titleForSegment(at: segmentedControlIndex)
